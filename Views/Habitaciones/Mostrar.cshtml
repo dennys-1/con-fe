@@ -1,0 +1,38 @@
+@model IEnumerable<hotel_santa_ursula_II.Models.Habitaciones>
+
+@{
+    ViewData["Title"] = "Catalogo";  
+}
+
+
+<h1>@ViewData["Title"]</h1>
+  <div class="container">
+    <h1>@ViewData["Message"]</h1>
+    <div class="row">
+      <div class="col">
+        <div id="products" class="mb-3">
+          <div class="row">
+            @foreach (var item in Model) {
+            <div class="col-sm-4">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="card-img-actions">
+                    <img class="img-responsive" width="250" height="180"
+                       src="@item.Imagen" alt="@item.Imagen"  />
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">@Html.DisplayFor(modelItem => item.numero)</h5>
+                  @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.descripcion))
+                
+                  <a asp-action="Seleccionar" asp-route-id="@item.id" class="btn btn-success active" role="button">S/ @Html.DisplayFor(modelItem => item.precio) Reservar</a> 
+
+                </div>
+              </div>
+            </div>
+            }
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
